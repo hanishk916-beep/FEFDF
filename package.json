@@ -1,0 +1,65 @@
+import Sidebar from "../components/Sidebar";
+
+function Notifications() {
+  const notifications = [
+    {
+      id: 1,
+      message: "Leave Approved for Sarah Johnson",
+      type: "Success",
+    },
+    {
+      id: 2,
+      message: "Duty Hours Exceeded for John Smith",
+      type: "Warning",
+    },
+    {
+      id: 3,
+      message: "Duplicate Assignment Detected",
+      type: "Alert",
+    },
+    {
+      id: 4,
+      message: "Pilot License Expiring Soon",
+      type: "Alert",
+    },
+  ];
+
+  return (
+    <div style={{ display: "flex" }}>
+      <Sidebar />
+
+      <div style={{ padding: "20px", flex: 1 }}>
+        <h1>🔔 Notifications</h1>
+
+        <table
+          border="1"
+          cellPadding="10"
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+          }}
+        >
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Notification</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {notifications.map((notification) => (
+              <tr key={notification.id}>
+                <td>{notification.id}</td>
+                <td>{notification.message}</td>
+                <td>{notification.type}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+export default Notifications;

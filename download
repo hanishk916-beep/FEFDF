@@ -1,0 +1,118 @@
+import Sidebar from "../components/Sidebar";
+
+function DutyTracker() {
+  const crewDutyData = [
+    {
+      id: 1,
+      name: "John Smith",
+      flightHours: 70,
+      dutyHours: 85,
+      restHours: 12,
+    },
+    {
+      id: 2,
+      name: "Sarah Johnson",
+      flightHours: 95,
+      dutyHours: 110,
+      restHours: 8,
+    },
+    {
+      id: 3,
+      name: "David Lee",
+      flightHours: 60,
+      dutyHours: 75,
+      restHours: 14,
+    },
+  ];
+
+  return (
+    <div style={{ display: "flex" }}>
+      <Sidebar />
+
+      <div style={{ padding: "20px", flex: 1 }}>
+        <h1>Duty Hour Tracker</h1>
+
+        <div
+          style={{
+            display: "flex",
+            gap: "20px",
+            marginBottom: "20px",
+          }}
+        >
+          <div
+            style={{
+              border: "1px solid #ddd",
+              padding: "15px",
+              borderRadius: "8px",
+            }}
+          >
+            <h3>Total Crew</h3>
+            <h2>3</h2>
+          </div>
+
+          <div
+            style={{
+              border: "1px solid #ddd",
+              padding: "15px",
+              borderRadius: "8px",
+            }}
+          >
+            <h3>Warnings</h3>
+            <h2>1</h2>
+          </div>
+
+          <div
+            style={{
+              border: "1px solid #ddd",
+              padding: "15px",
+              borderRadius: "8px",
+            }}
+          >
+            <h3>Compliant</h3>
+            <h2>2</h2>
+          </div>
+        </div>
+
+        <table
+          border="1"
+          cellPadding="10"
+          style={{
+            width: "100%",
+            borderCollapse: "collapse",
+          }}
+        >
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Flight Hours</th>
+              <th>Duty Hours</th>
+              <th>Rest Hours</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {crewDutyData.map((crew) => (
+              <tr key={crew.id}>
+                <td>{crew.name}</td>
+                <td>{crew.flightHours}</td>
+                <td>{crew.dutyHours}</td>
+                <td>{crew.restHours}</td>
+
+                <td>
+                  {crew.restHours < 10
+                    ? "🚨 Fatigue Risk"
+                    : crew.dutyHours > 100
+                    ? "⚠ Warning"
+                    : "✅ Compliant"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+}
+
+export default DutyTracker;
